@@ -1,0 +1,26 @@
+<table class="table table-bordered" >
+    <tr>
+        <th>Account Id</th>
+        <th>Loan Type</th>
+        <th>Loan Amount</th>
+        <th>Loan Start Date</th>
+        <th>Loan Repay Date</th>
+        <th>Status</th>
+
+    </tr>
+    <tr *ngFor="let c of myService.allLoans">
+    <ng-container *ngIf="!c.activeState">
+        <td> {{c.accountId}} </td>
+        <td> {{c.loanType}} </td>
+        <td> {{c.loanAmount}} </td>
+        <td> {{c.loanStartDate}} </td>
+        <td> {{c.loanEndDate}} </td>
+        <td> {{c.activeState}} </td>
+        <td> 
+        <button class="btn btn-success" style="background-color: rgb(2, 214, 2);" (click)="AcceptLoan(c.loanId,c,c.accountId)">Admit</button>
+        <button class="btn btn-danger ml-2" style="background-color: rgb(235, 10, 10);" (click)="RejectLoan(c.loanId)">Reject</button>    
+        
+        </td>
+    </ng-container>
+    </tr>
+    </table>

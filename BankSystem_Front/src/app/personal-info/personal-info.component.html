@@ -1,0 +1,53 @@
+
+<div class="container-fluid form-container">
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-5 content-part">
+                <h4 class="logo mb-5">QKTR BANK</h4>
+
+                <h3 class="mb-3">Welcome {{logUser}}</h3>
+                <h6 class="mb-3">Your Id is <b>{{logIdUser}} </b>and this Id can't be changed</h6>
+                <h6 class="mb-5">Also Your Account Id is <b>{{logIdAccount}}</b> and can't be changed, it used for transfer purposes</h6>
+
+                <img src="assets/regAssets/images/feature-img-05.png" alt="">
+
+                
+            </div>
+            <div class="col-md-7 form-part">
+              <div class="row">
+
+                <div class="col-lg-8 col-md-11  formcol mx-auto">
+                     <h3>Update My Password</h3>
+                     
+                 <form  [formGroup]="formUser" >
+                  
+                 
+                     
+                    <div class="form-floating">
+                      <input type="password" formControlName="Pass"  matInput class="form-control">
+                      <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" matInput class="form-control">
+                        <label for="floatingPassword">Confirm Password</label>
+                      </div>
+                   
+                   
+                   
+                    
+                    
+                    <div class="form-floating">
+                     <button type="submit" (click)="RegisterNewUser()" class="btn btn-primary">Create Account</button>
+                    </div>
+                    
+
+</form>
+                </div>
+             
+               
+              </div>
+               
+            </div>
+        </div>
+    </div>
+  </div> 

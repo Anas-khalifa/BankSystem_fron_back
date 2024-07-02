@@ -1,0 +1,29 @@
+<h1 style="text-align: center; margin-top: 5%;margin-bottom: 5%;">Users Registration</h1>
+<table class="table table-bordered" >
+<tr>
+    <th>Id</th>
+    <th>Full Name</th>
+    <th>Age</th>
+    <th>Address</th>
+    <th>phone Number</th>
+    <th>Gender</th>
+    <th>Role Name</th>
+    <th> Status </th>
+</tr>
+<tr *ngFor="let user of myService.UserData">
+
+    <td> {{user.id}} </td>
+    <td> {{user.fullname}} </td>
+    <td> {{user.age}} </td>
+    <td> {{user.address}} </td>
+    <td> {{user.phoneNumber}} </td>
+    <td> {{user.gender}} </td>
+    <td> {{user.roleName}} </td>
+    <td> 
+    <button class="btn btn-success" style="background-color: rgb(2, 214, 2);" (click)="admitBtn(user.id,user)">Admit</button>
+    <button class="btn btn-danger ml-2" style="background-color: rgb(235, 10, 10);" (click)="remove(user.id)">Reject</button>    
+    
+    </td>
+</tr>
+
+<a class="btn btn-primary" style="width: 100%;padding-top: 20px;padding-bottom: 20px; margin-top:70px;margin-bottom: 30px;" href="employee">Users Loans</a>

@@ -1,0 +1,71 @@
+
+    <div class="container-fluid form-container">
+      <div class="container login-container">
+          <div class="row">
+              <div class="col-md-5 content-part">
+                  <h4 class="logo">QKTR BANK</h4>
+
+                  <img src="assets/regAssets/images/feature-img-05.png" alt="">
+
+                  <h2>Get instant visibility into all your team work.</h2>
+                  <p>Don’t waste time on tedious manual tasks. Let Automation do it for you. Simplify workflows, 
+                  reduce errors, and save time for solving more important problems.</p>
+              </div>
+              <div class="col-md-7 form-part">
+                <div class="row">
+                   <p class="signinlink">I already have an account <a href="login">Sign In</a></p>
+
+                  <div class="col-lg-8 col-md-11  formcol mx-auto">
+                       <h3>Sign Up to QKTR</h3>
+                       
+                   <form  [formGroup]="formUser" >
+                    <div class="form-floating mb-3">
+                      <input formControlName="RoleName" placeholder="User/Employee"  class="form-control" >
+                      <label for="floatingInput">Account Type</label>
+                      
+                    </div>
+                    <div class="form-floating">
+                        <input formControlName="Username"  matInput class="form-control">
+                        <label for="floatingPassword">Username</label>
+                      </div>
+                       <div class="form-floating mb-3">
+                        <input formControlName="Fullname" matInput class="form-control" >
+                        <label for="floatingInput">Full Name</label>
+                      </div>
+                      <div class="form-floating">
+                        <input type="password" formControlName="Pass"  matInput class="form-control">
+                        <label for="floatingPassword">Password</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input formControlName="Age" matInput class="form-control">
+                        <label for="floatingInput">Age</label>
+                      </div>
+                       <div class="form-floating mb-3">
+                        <input formControlName="Address" matInput class="form-control">
+                        <label for="floatingInput">Address</label>
+                      </div>
+                      <div class="form-floating">
+                        <input formControlName="PhoneNumber"  matInput class="form-control">
+                        <label for="floatingPassword">PhoneNumber</label>
+                      </div>
+                      <div class="form-floating">
+                        <input formControlName="Gender" matInput class="form-control">
+                        <label for="floatingPassword">Gender</label>
+                      </div>
+                      
+                      
+                      <div class="form-floating">
+                       <button type="submit" (click)="RegisterNewUser()" class="btn btn-primary">Create Account</button>
+                      </div>
+                      
+  
+ </form>
+                  </div>
+               
+                 
+                </div>
+                 
+              </div>
+          </div>
+      </div>
+    </div> 

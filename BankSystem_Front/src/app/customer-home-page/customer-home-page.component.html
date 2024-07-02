@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="../../assets/customerAssets/css/style.css">
+  <link rel="shortcut icon" href="../../assets/customerAssets/images/favicon.png" />
+</head>
+
+<body>
+
+  <div class="content-wrapper" style="background-color: white !important;">
+
+    <div class="row">
+      <h2 style="text-align: center; color: black;"><b>Last Transactions</b> </h2>
+      
+      <ng-container *ngFor="let c of myService.allTransactions;let i=index">
+        
+          <ng-container *ngIf="c.accountId==logIdAccount">
+            <ng-container *ngIf="i>myService.allTransactions.length-7">
+            <div class="col-xl-2 col-sm-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body align-self-center">
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="d-flex align-items-center align-self-center">
+                        <h3 class="mb-0 ml-3" style="color: aliceblue !important;">{{c.amount}}</h3>
+                      </div>
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                  </div>
+                  <h6 class="text-muted font-weight-normal mt-3 ml-1">{{c.transactionType}}</h6>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+
+    </div>
+
+    <form [formGroup]="formOp">
+
+
+    <div class="row">
+      <div class="col-md-3 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Availiabe Balance</h3>
+            <div style="margin-top: 15%;margin-bottom: 15%;">
+              <ng-container *ngFor="let c of myService.AccountData">
+                <h1 style="color: aliceblue !important;text-align: center !important;" *ngIf="c.userId==logIdUser">
+                  {{c.balance}}</h1>
+
+              </ng-container>
+            </div>
+
+            <ng-container *ngFor="let c of myService.allTransfer;index as i">
+              <ng-container *ngIf="c.fromCustomerId==logIdAccount">
+                <ng-container *ngIf="i>myService.allTransfer.length-3">
+                <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                  <div class="text-md-center text-xl-left">
+
+                    <h6 class="mb-1" style="color: aliceblue;" >
+                      
+                    Transfer to {{c.toCustomerId}}</h6>
+                    
+                    <p class="text-muted mb-0">{{c.transferDate}}</p>
+                  </div>
+                  <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+                    <h6 class="font-weight-bold mb-0" style="color: antiquewhite;">${{c.amount}}</h6>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="col-9 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title" style="text-align: center; margin-bottom: 5%;">Operations</h2>
+            <div class="row">
+              <div class="col-3 card" style="width: 18rem; background-color: azure; border: 7px solid black;">
+                <div class="card-body">
+                  <h5 class="card-title" style="color: black; text-align: center;">Withdraw</h5>
+                  <hr>
+                  <p class="card-text">You can withdraw any amount you need below 50JD, for security issue</p>
+                  <button type="button" class="btn btn-dark ml-5" data-toggle="modal" data-target="#exampleModalCenter1">
+                    Withdraw
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle1" style="color: aliceblue;">Withdraw</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <input type="number" class="modal-body" placeholder="insert decimal Amuont"
+                          formControlName="amount">
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" (click)="withdrawOperation()">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+               <div class="col-3 card" style="width: 18rem; background-color: azure;border: 7px solid black;">
+                <div class="card-body">
+                  <h5 class="card-title" style="color: black; text-align: center;">Deposit</h5>
+                  <hr>
+                  <p class="card-text">You can withdraw any amount you need below 50JD, for security issue</p>
+                  <button type="button" class="btn btn-dark ml-5" data-toggle="modal" data-target="#exampleModalCenter2">
+                    Deposit
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle2" style="color: aliceblue;">Deposit</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <input type="number" class="modal-body" placeholder="insert decimal Amuont"
+                          formControlName="amount">
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" (click)="depositOperation()">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-3 card" style="width: 18rem; background-color: azure;border: 7px solid black;">
+                <div class="card-body">
+                  <h5 class="card-title" style="color: black;text-align: center;">Transfer</h5>
+                  <hr>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <button type="button" class="btn btn-dark ml-5" data-toggle="modal" data-target="#exampleModalCenter3">
+                    CliQ
+                  </button>                </div>
+                <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle3" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle3">CliQ</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <input type="number" class="modal-body" placeholder="insert decimal Amuont" formControlName="amount">
+                <input type="number" class="modal-body" placeholder="insert the Account Id " formControlName="toCustomerId">
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="transferOperation()">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+              </div>
+
+              <div class="col-3 card" style="width: 18rem; background-color: azure;border: 7px solid black;">
+                <div class="card-body">
+                  <h5 class="card-title" style="color: black;text-align: center;">Bill Payments</h5>
+                  <hr>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <button type="button" class="btn btn-dark ml-5" data-toggle="modal" data-target="#exampleModalCenter4">
+                    Pay Bills
+                  </button>           
+                     </div>
+                <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle4" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle4">Bills</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <input type="number" class="modal-body" placeholder="insert decimal Amuont" formControlName="amount">
+                <input type="number" class="modal-body" placeholder="insert the Id " formControlName="toCustomerId">
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="billOperation()">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="row ">
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Loans Status</h4>
+            <button class="badge badge-outline-success" data-toggle="modal" data-target="#exampleModalCenter">New Loan</button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Loans</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <input type="number" class="modal-body" placeholder="insert decimal Amuont" formControlName="amount">
+                  <input type="date" class="modal-body" placeholder="final date to repay" formControlName="finalDate">
+  
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="addLoan()">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                  
+                    <th> Amount </th>
+                    <th> Type </th>
+                    <th> Start Date </th>
+                    <th> End Date </th>
+                    <th> Status </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let c of myService.allLoans">
+                    
+                  <tr *ngIf="c.accountId==logIdAccount">
+                    
+                    <td style="color: aliceblue;"> {{c.loanAmount}} </td>
+                    <td style="color: aliceblue;"> {{c.loanType}} </td>
+                    <td style="color: aliceblue;"> {{c.loanStartDate}} </td>
+                    <td style="color: aliceblue;"> {{c.loanEndDate}} </td>
+                    <td style="color: aliceblue;">
+                      <div class="badge badge-outline-success" *ngIf="c.activeState">Approved</div>
+                      <div class="badge badge-outline-warning"  *ngIf="!c.activeState">Pending</div>
+                      
+                    </td>
+                  </tr>
+                  </ng-container>
+                 </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</form>
+
+  </div>
+  <a class="btn btn-dark" style="width: 100%;padding-top: 10px;padding-bottom: 10px; margin-top:70px;margin-bottom: 30px;" href="MyAccount">My Account</a>
+<a class="btn btn-primary" style="width: 100%;padding-top: 20px;padding-bottom: 20px; margin-top:70px;margin-bottom: 30px;" *ngIf="role==='employee'" href="employeeApprove">Users setting</a>
+</body>
+
+</html>

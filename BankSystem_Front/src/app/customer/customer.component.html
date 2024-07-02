@@ -1,0 +1,221 @@
+
+
+<div style="text-align: center;margin-top: 5%;margin-bottom: 5%;">
+    <h1>My Operations</h1> 
+</div>
+<h1>hello {{logUser}}</h1>
+<form [formGroup]="formOp">
+<div class="row" >
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body"style="text-align: center;">
+          <h5 class="card-title">Withdraw</h5>
+          <p class="card-text"></p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1">
+            Withdraw
+          </button>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body"style="text-align: center;">
+          <h5 class="card-title">Deposit</h5>
+          <p class="card-text">You can Deposit any amount you want </p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2">
+            Deposit
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle2">Deposit</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <input type="number" class="modal-body" placeholder="insert decimal Amuont" formControlName="amount">
+                <input type="number" class="modal-body" hidden formControlName="transactionType" value="Deposit">
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="depositOperation()">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 3%;">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body" style="text-align: center;">
+          <h5 class="card-title">Transfer (CliQ)</h5>
+          <p class="card-text">you just need the Id of the person you want to transfer</p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter3">
+            Transfer
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle3" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle3">CliQ</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <input type="number" class="modal-body" placeholder="insert decimal Amuont" formControlName="amount">
+                <input type="number" class="modal-body" placeholder="insert the Id " formControlName="toCustomerId">
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="transferOperation()">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body" style="text-align: center;">
+          <h5 class="card-title">Bill payments</h5>
+          <p class="card-text">You can pay any Bill you want, using Bill-Id and amount of Bill</p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter4">
+            Pay Bill
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle4" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle4">Bills</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <input type="number" class="modal-body" placeholder="insert decimal Amuont" formControlName="amount">
+                <input type="number" class="modal-body" placeholder="insert paymnet number">
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="billOperation()">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 mt-5">
+      <div class="card">
+        <div class="card-body" style="text-align: center;">
+          <h5 class="card-title">Get Loans</h5>
+          <p class="card-text">You can get any loan you want, start with 500 Till 50000</p>
+          <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#exampleModalCenter">
+            Get Loan
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Loans</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <input type="number" class="modal-body" placeholder="insert decimal Amuont" formControlName="amount">
+                <input type="date" class="modal-body" placeholder="final date to repay" formControlName="finalDate">
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="addLoan()">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<ng-container *ngFor="let c of myService.AccountData">
+<h1 *ngIf="c.userId==logIdUser">Balance is {{c.balance}}</h1></ng-container>
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+  <tr>
+      <th>Id</th>
+      <th>type</th>
+      <th>amount</th>
+      <th>start</th>
+      <th>end</th>
+      <th>active</th>
+  </tr>
+</thead>
+<ng-container *ngFor="let c of myService.allLoans">
+  <tr *ngIf="c.accountId==logIdAccount">
+      <td>{{c.LoanId}}</td>
+      <td>{{c.loanType}}</td>
+      <td>{{c.loanAmount}}</td>
+      <td>{{c.loanStartDate}}</td>
+      <td>{{c.loanEndDate}}</td>
+      <td>{{c.activeState}}</td>
+  </tr>
+</ng-container>
+</table>
+
+<table class="table table-bordered table-striped mt-5">
+  <thead class="thead-dark">
+  <tr>
+      <th>Id</th>
+      <th>fuul Name</th>
+      <th>age</th>
+      <th>address</th>
+      <th>phone</th>
+      <th>gender</th>
+      <th>postion</th>
+  </tr>
+</thead>
+<ng-container *ngFor="let c of myService.AllUserData">
+  <tr *ngIf="c.id==logIdUser">
+      <td>{{c.id}}</td>
+      <td>{{c.fullName}}</td>
+      <td>{{c.age}}</td>
+      <td>{{c.address}}</td>
+      <td>{{c.phoneNumber}}</td>
+      <td>{{c.gender}}</td>
+      <td>{{c.roleName}}</td>
+  </tr>
+</ng-container>
+</table>
+
+
+<table class="table table-bordered" >
+  <tr>
+      <th>Account Id</th>
+      <th>Loan Type</th>
+      <th>Loan Amount</th>
+      <th>Loan Start Date</th>
+      <th>Loan Repay Date</th>
+      <th>Status</th>
+
+  </tr>
+  <tr *ngFor="let c of myService.allLoans">
+  
+      <td> {{c.accountId}} </td>
+      <td> {{c.loanType}} </td>
+      <td> {{c.loanAmount}} </td>
+      <td> {{c.loanStartDate}} </td>
+      <td> {{c.loanEndDate}} </td>
+      <td> {{c.activeState}} </td>
+      <td> 
+      sad
+      </td>
+  </tr>
+  </table>
